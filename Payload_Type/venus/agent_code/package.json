@@ -1,10 +1,10 @@
 {
 	"name": "replace_extension_name",
-	"displayName": "Widgets for VS Code",
-	"description": "Widgets support for Visual Studio Code",
-	"publisher": "widgetcorp",
-	"repository": "https://github.com/microsoft/vscode",
-	"version": "0.0.1",
+	"displayName": "REPLACE_DISPLAY_NAME",
+	"description": "REPLACE_DESCRIPTION",
+	"publisher": "REPLACE_PUBLISHER",
+	"repository": "REPLACE_REPOSITORY",
+	"version": "REPLACE_VERSION",
 	"engines": {
 		"vscode": "^1.51.0"
 	},

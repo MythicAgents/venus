@@ -22,7 +22,42 @@ class Venus(PayloadType):
             name="name",
             parameter_type=BuildParameterType.String,
             description="Name of your extension",
-            default_value="example",
+            default_value="venus",
+            required=True,
+        ),
+        "display_name": BuildParameter(
+            name="display_name",
+            parameter_type=BuildParameterType.String,
+            description="Human-friendly display name of your extension",
+            default_value="Venus",
+            required=True,
+        ),
+        "description": BuildParameter(
+            name="description",
+            parameter_type=BuildParameterType.String,
+            description="Description of your extension",
+            default_value="Venus is a Visual Studio Code extension",
+            required=True,
+        ),
+        "publisher": BuildParameter(
+            name="publisher",
+            parameter_type=BuildParameterType.String,
+            description="Publisher of your extension",
+            default_value="corp",
+            required=True,
+        ),
+        "repository": BuildParameter(
+            name="repository",
+            parameter_type=BuildParameterType.String,
+            description="Link to extension source code",
+            default_value="https://github.com/microsoft/vscode",
+            required=True,
+        ),
+        "version": BuildParameter(
+            name="version",
+            parameter_type=BuildParameterType.String,
+            description="Version of your extension",
+            default_value="0.0.1",
             required=False,
         )
     }
@@ -36,8 +71,7 @@ class Venus(PayloadType):
         agent_build_path = tempfile.TemporaryDirectory(suffix=self.uuid)
         copy_tree(self.agent_code_path, agent_build_path.name)
 
-        # [/] In "{}/extension.js".format(self.agent_code_path)
-        # Replace REPLACE_PAYLOAD_UUID with value of `self.uuid`
+        # Replace placeholder values in extension source
         extension = open(
             "{}/extension.js".format(agent_build_path.name), "r"
         ).read()
@@ -46,13 +80,24 @@ class Venus(PayloadType):
             "{}/extension.js".format(agent_build_path.name), "w"
         ).write(modified)
 
-        # [/] In "{}/package.json".format(self.agent_code_path)
-        # Replace replace_extension_name
+        # Replace placeholder values in extension manifest
         manifest = open(
             "{}/package.json".format(agent_build_path.name), "r"
         ).read()
+
         modified2 = manifest.replace("replace_extension_name",
             self.get_parameter('name'))
+        modified2 = modified2.replace("REPLACE_DISPLAY_NAME",
+            self.get_parameter('display_name'))
+        modified2 = modified2.replace("REPLACE_DESCRIPTION",
+            self.get_parameter('description'))
+        modified2 = modified2.replace("REPLACE_PUBLISHER",
+            self.get_parameter('publisher'))
+        modified2 = modified2.replace("REPLACE_REPOSITORY",
+            self.get_parameter('repository'))
+        modified2 = modified2.replace("REPLACE_VERSION",
+            self.get_parameter('version'))
+
         manifest = open(
             "{}/package.json".format(agent_build_path.name), "w"
         ).write(modified2)
