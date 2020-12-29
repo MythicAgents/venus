@@ -12,7 +12,11 @@ class Venus(PayloadType):
     name = "venus"
     file_extension = "zip"
     author = "@mattreduce"
-    supported_os = [SupportedOS.Linux, SupportedOS.MacOS]
+    supported_os = [
+            SupportedOS.Linux,
+            SupportedOS.MacOS,
+            SupportedOS.Windows
+    ]
     wrapper = False
     wrapped_payloads = []
     note = "This payload uses JavaScript for execution in the context of Visual Studio Code via an Extension"

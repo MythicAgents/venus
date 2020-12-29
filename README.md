@@ -27,10 +27,9 @@ This can be done from the editor UI or from the CLI with:
 $ code --install-extension venus-0.0.1.vsix
 ```
 
+:white_check_mark: Cross-platform (tested on macOS, Linux, Windows)  
 :warning: Doesn't support encrypted payloads yet, always use TLS  
 :warning: Not yet dependable enough for operations  
-:warning: Only tested against macOS and Linux, but should run anywhere in
-Visual Studio Code
 
 ## Mythic Payload Type installation
 
