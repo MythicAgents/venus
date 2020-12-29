@@ -37,7 +37,7 @@ Visual Studio Code
 From the top-level directory of Mythic on your C2 server, run the command:
 
 ```shell
-$ sudo ./install_agent_from_github.sh https://github.com/mattreduce/venus
+$ sudo ./install_agent_from_github.sh https://github.com/MythicAgents/venus
 ```
 
 Once installed, restart Mythic to build a new Venus agent.
