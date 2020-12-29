@@ -16,7 +16,7 @@ $ code --install-extension my-extension-0.0.1.vsix
 
 :warning: Doesn't support encrypted payloads yet, always use TLS  
 :warning: Not yet dependable enough for operations  
-:warning: Only tested against macOS, should run anywhere in Visual Studio Code
+:warning: Only tested against macOS and Linux, should run anywhere in Visual Studio Code
 
 ## Mythic Payload Type installation
 
