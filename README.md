@@ -5,18 +5,32 @@
 <h1 align="center" style="margin-top: 0px;">Venus<br/></h1>
 
 Venus is a [VS Code](https://code.visualstudio.com/) extension that acts as an
-agent for Mythic C2. It produces a `.vsix` extension file that can be delivered
-to target/test machines manually or via social engineering. The extension must
-then be manually installed in Visual Studio Code. This can be done from the CLI
-like so:
+agent for Mythic C2. It produces a zipped folder of VS Code extension source
+code, which currently must be packaged by the operator before delivering to
+target/test machines manually or via social engineering.
+
+Make sure you have Node.js installed, then get the `vsce` package and package
+your extension you downloaded after running through "Create Payload" on
+Mythic like so:
 
 ```shell
-$ code --install-extension my-extension-0.0.1.vsix
+$ npm install -g vsce
+$ unzip venus.zip
+$ cd venus
+$ vsce package
+```
+
+The extension must then be manually installed on target in Visual Studio Code.
+This can be done from the editor UI or from the CLI with:
+
+```shell
+$ code --install-extension venus-0.0.1.vsix
 ```
 
 :warning: Doesn't support encrypted payloads yet, always use TLS  
 :warning: Not yet dependable enough for operations  
-:warning: Only tested against macOS and Linux, should run anywhere in Visual Studio Code
+:warning: Only tested against macOS and Linux, but should run anywhere in
+Visual Studio Code
 
 ## Mythic Payload Type installation
 
