@@ -75,7 +75,17 @@ class Venus(PayloadType):
         extension = open(
             "{}/extension.js".format(agent_build_path.name), "r"
         ).read()
+
         modified = extension.replace("REPLACE_PAYLOAD_UUID", self.uuid)
+        for c2 in self.c2info:
+            profile = c2.get_c2profile()
+
+            if profile["name"] == "HTTP":
+                for key, value in c2.get_parameters_dict().items():
+                    modified = modified.replace(key, value)
+            else:
+                raise Exception("Venus does not support the {} C2 Profile".format(profile["name"]))
+
         extension = open(
             "{}/extension.js".format(agent_build_path.name), "w"
         ).write(modified)

@@ -8,8 +8,8 @@ const outchan = vscode.window.createOutputChannel("Venus");
 
 const payloadUUID = "REPLACE_PAYLOAD_UUID"
 
-const baseURL = new url.URL('http://localhost');
-baseURL.port = '8080';
+const baseURL = new url.URL('callback_host');
+baseURL.port = 'callback_port';
 const client = axios.create({
 	baseURL: baseURL.toString(),
 	responseType: 'json',
