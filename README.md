@@ -9,6 +9,8 @@ agent for Mythic C2. It produces a zipped folder of VS Code extension source
 code, which currently must be packaged by the operator before delivering to
 target/test machines manually or via social engineering.
 
+testing
+
 Make sure you have Node.js installed, then get the `vsce` package and package
 your extension you downloaded after running through "Create Payload" on
 Mythic like so:
