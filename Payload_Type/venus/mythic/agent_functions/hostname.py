@@ -16,7 +16,7 @@ class HostnameCommand(CommandBase):
     description = "This uses the `os` Node.js package to return the target's hostname."
     version = 1
     author = "@mattreduce"
-    attackmapping = ["T1016"]
+    attackmapping = ["T1082"]
     argument_class = HostnameArguments
 
     async def create_tasking(self, task: MythicTask) -> MythicTask:
