@@ -41,6 +41,16 @@ $ sudo ./install_agent_from_github.sh https://github.com/MythicAgents/venus
 
 Once installed, restart Mythic to build a new Venus agent.
 
+## Commands
+
+Command | Syntax | Description
+------- | ------ | -----------
+current_user | `current_user` | Uses the `os` Node.js package to get information about the current user.
+exit | `exit` | Exit a callback.
+hostname | `hostname` | Uses the `os` Node.js package to return the target's hostname.
+pwd | `pwd` | Prints the current working directory for the agent.
+shell | `shell [command]` | Uses the `execSync()` Node.js function to execute arbitrary shell commands.
+
 ## Thank you
 
 Venus icon made by [Freepik](https://www.flaticon.com/authors/freepik)
