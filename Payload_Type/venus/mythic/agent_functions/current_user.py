@@ -1,4 +1,4 @@
-from CommandBase import *
+from mythic_payloadtype_container.MythicCommandBase import *
 import json
 
 class CurrentUserArguments(TaskArguments):
@@ -15,12 +15,6 @@ class CurrentUserCommand(CommandBase):
     help_cmd = "current_user"
     description = "This uses the `os` Node.js package to get information about the current user."
     version = 1
-    is_exit = False
-    is_file_browse = False
-    is_process_list = False
-    is_download_file = False
-    is_remove_file = False
-    is_upload_file = False
     author = "@mattreduce"
     attackmapping = ["T1033"]
     argument_class = CurrentUserArguments

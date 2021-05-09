@@ -9,9 +9,28 @@ agent for Mythic C2. It produces a zipped folder of VS Code extension source
 code, which currently must be packaged by the operator before delivering to
 target/test machines manually or via social engineering.
 
-Make sure you have Node.js installed, then get the `vsce` package and package
-your extension you downloaded after running through "Create Payload" on
-Mythic like so:
+:white_check_mark: Cross-platform (tested on macOS, Linux, Windows)  
+:warning: Doesn't support encrypted payloads yet, always use TLS  
+:warning: Not yet dependable enough for operations  
+
+## Installation
+
+From the top-level directory of Mythic on your C2 server, run the command:
+
+```shell
+$ sudo ./mythic-cli install github https://github.com/MythicAgents/venus
+```
+
+or to install a specific Git branch of Venus:
+
+```shell
+$ sudo ./mythic-cli install github https://github.com/MythicAgents/venus branchname
+```
+
+## Usage
+
+First, create a Venus Payload in Mythic and download it to your local machine. Make sure 
+you have Node.js installed then get the `vsce` package and compile your extension like so:
 
 ```shell
 $ npm install -g vsce
@@ -27,21 +46,7 @@ This can be done from the editor UI or from the CLI with:
 $ code --install-extension venus-0.0.1.vsix
 ```
 
-:white_check_mark: Cross-platform (tested on macOS, Linux, Windows)  
-:warning: Doesn't support encrypted payloads yet, always use TLS  
-:warning: Not yet dependable enough for operations  
-
-## Mythic Payload Type installation
-
-From the top-level directory of Mythic on your C2 server, run the command:
-
-```shell
-$ sudo ./install_agent_from_github.sh https://github.com/MythicAgents/venus
-```
-
-Once installed, restart Mythic to build a new Venus agent.
-
-## Commands
+### Commands
 
 Command | Syntax | Description
 ------- | ------ | -----------

@@ -1,5 +1,5 @@
-from CommandBase import *
-from MythicResponseRPC import *
+from mythic_payloadtype_container.MythicCommandBase import *
+from mythic_payloadtype_container.MythicRPC import *
 import json
 
 class ShellArguments(TaskArguments):
@@ -26,21 +26,16 @@ class ShellCommand(CommandBase):
     help_cmd = "shell {command}"
     description = "This uses the execSync() Node.js function to execute arbitrary shell commands."
     version = 1
-    is_exit = False
-    is_file_browse = False
-    is_process_list = False
-    is_download_file = False
-    is_remove_file = False
-    is_upload_file = False
     author = "@mattreduce"
     attackmapping = ["T1059"]
     argument_class = ShellArguments
 
     async def create_tasking(self, task: MythicTask) -> MythicTask:
-        resp = await MythicResponseRPC(task).register_artifact(
-            artifact_instance="{}".format(task.args.get_arg("command")),
+        resp = await MythicRPC().execute("create_artifact", task_id=task.id,
+            artifact="{}".format(task.args.get_arg("command")),
             artifact_type="Process Create",
         )
+        task.display_params = task.args.get_arg("command")
         return task
 
     async def process_response(self, response: AgentResponse):

@@ -1,4 +1,4 @@
-from CommandBase import *
+from mythic_payloadtype_container.MythicCommandBase import *
 import json
 
 class PwdArguments(TaskArguments):
@@ -15,12 +15,6 @@ class PwdCommand(CommandBase):
     help_cmd = "pwd"
     description = "Prints the current working directory for the agent"
     version = 1
-    is_exit = False
-    is_file_browse = False
-    is_process_list = False
-    is_download_file = False
-    is_remove_file = False
-    is_upload_file = False
     author = "@mattreduce"
     attackmapping = ["T1083"]
     argument_class = PwdArguments
