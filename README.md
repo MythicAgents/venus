@@ -11,8 +11,7 @@ target/test machines manually or via social engineering.
 
 :white_check_mark: Mythic v2.2+ compatible since v0.2.0  
 :white_check_mark: Cross-platform (tested on macOS, Linux, Windows)  
-:warning: Doesn't support encrypted payloads yet, always use TLS  
-:warning: Not yet dependable enough for operations  
+:warning: Doesn't support encrypted payloads yet, always use TLS    
 
 ## Installation
 
