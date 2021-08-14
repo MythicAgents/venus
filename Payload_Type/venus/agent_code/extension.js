@@ -115,6 +115,15 @@ function handleTasks(context, tasks) {
 			case 'hostname':
 				output = os.hostname()
 				break
+			case 'ls':
+				const path = JSON.parse(parameters)['path']
+				const results = vscode.workspace.fs.readDirectory(path).then(entries => {
+					var filenames = []
+					for (const entry of entries) {
+						filenames.push(entry[0])
+					}
+					output = filenames.join('\n');
+				});
 			case 'pwd':
 				output = process.cwd()
 				break
