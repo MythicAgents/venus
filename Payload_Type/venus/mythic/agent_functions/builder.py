@@ -62,7 +62,7 @@ class Venus(PayloadType):
             name="version",
             parameter_type=BuildParameterType.String,
             description="Version of your extension",
-            default_value="0.0.1",
+            default_value="0.3.0",
             required=False,
         )
     }
