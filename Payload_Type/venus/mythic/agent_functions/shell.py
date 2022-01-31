@@ -6,8 +6,14 @@ class ShellArguments(TaskArguments):
     def __init__(self, command_line, **kwargs):
         super().__init__(command_line, **kwargs)
         self.args = [
-            "command": CommandParameter(
-                name="command", type=ParameterType.String, description="Command to run"
+            CommandParameter(
+                name="command",
+                type=ParameterType.String,
+                description="Command to run",
+                parameter_group_info=[ParameterGroupInfo(
+                    required=True,
+                    group_name="Default"
+                )]
             )
         ]
 
