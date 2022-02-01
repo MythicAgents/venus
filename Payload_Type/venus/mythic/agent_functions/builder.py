@@ -22,50 +22,50 @@ class Venus(PayloadType):
     wrapped_payloads = []
     note = "This payload uses JavaScript for execution in the context of Visual Studio Code via an Extension"
     supports_dynamic_loading = False
-    build_parameters = {
-        "name": BuildParameter(
+    build_parameters = [
+        BuildParameter(
             name="name",
             parameter_type=BuildParameterType.String,
             description="Name of your extension",
             default_value="venus",
             required=True,
         ),
-        "display_name": BuildParameter(
+        BuildParameter(
             name="display_name",
             parameter_type=BuildParameterType.String,
             description="Human-friendly display name of your extension",
             default_value="Venus",
             required=True,
         ),
-        "description": BuildParameter(
+        BuildParameter(
             name="description",
             parameter_type=BuildParameterType.String,
             description="Description of your extension",
             default_value="Venus is a Visual Studio Code extension",
             required=True,
         ),
-        "publisher": BuildParameter(
+        BuildParameter(
             name="publisher",
             parameter_type=BuildParameterType.String,
             description="Publisher of your extension",
             default_value="corp",
             required=True,
         ),
-        "repository": BuildParameter(
+        BuildParameter(
             name="repository",
             parameter_type=BuildParameterType.String,
             description="Link to extension source code",
             default_value="https://github.com/microsoft/vscode",
             required=True,
         ),
-        "version": BuildParameter(
+        BuildParameter(
             name="version",
             parameter_type=BuildParameterType.String,
             description="Version of your extension",
             default_value="0.3.0",
             required=False,
         )
-    }
+    ]
 
     c2_profiles = ["http"]
     mythic_encrypts = True
