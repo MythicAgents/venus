@@ -90,7 +90,7 @@ class Venus(PayloadType):
 
             # Ensure only one C2 Profile is configured for this payload
             if len(self.c2info) != 1:
-                resp.build_stderr = "Apfell only supports one C2 Profile at a time"
+                resp.build_stderr = "Venus only supports one C2 Profile at a time"
                 resp.set_status(BuildStatus.Error)
                 return resp
 
