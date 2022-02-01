@@ -68,7 +68,7 @@ class Venus(PayloadType):
     ]
 
     c2_profiles = ["http"]
-    mythic_encrypts = True
+    mythic_encrypts = False
     translation_container = None
 
     async def build(self) -> BuildResponse:
