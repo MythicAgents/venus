@@ -1,3 +1,0 @@
-# extension name
-
-Description

@@ -33,7 +33,7 @@ First, create a Venus Payload in Mythic and download it to your local machine. M
 you have Node.js installed then get the `vsce` package and compile your extension like so:
 
 ```shell
-$ npm install -g vsce
+$ npm install -g @vscode/vsce
 $ unzip venus.zip
 $ cd venus
 $ vsce package
