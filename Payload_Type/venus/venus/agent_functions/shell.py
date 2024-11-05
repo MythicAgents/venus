@@ -30,7 +30,7 @@ class ShellCommand(CommandBase):
 
     async def opsec_pre(self, taskData: PTTaskMessageAllData) -> PTTTaskOPSECPreTaskMessageResponse:
         response = PTTTaskOPSECPreTaskMessageResponse(
-            TaskID=taskData.Task.ID, Success=True, OpsecPreBlocked=True,
+            TaskID=taskData.Task.ID, Success=True, OpsecPreBlocked=False,
             OpsecPreBypassRole="other_operator",
             OpsecPreMessage="Implemented, but not blocking, you're welcome!",
         )
@@ -38,7 +38,7 @@ class ShellCommand(CommandBase):
 
     async def opsec_post(self, taskData: PTTaskMessageAllData) -> PTTTaskOPSECPostTaskMessageResponse:
         response = PTTTaskOPSECPostTaskMessageResponse(
-            TaskID=taskData.Task.ID, Success=True, OpsecPostBlocked=True,
+            TaskID=taskData.Task.ID, Success=True, OpsecPostBlocked=False,
             OpsecPostBypassRole="other_operator",
             OpsecPostMessage="Implemented, but not blocking, you're welcome! Part 2",
         )
